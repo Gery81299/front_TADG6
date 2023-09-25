@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
+//import { useHistory } from "react-router-dom";
+
 
 export const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    //const history = useHistory();
 
     const handleLogin = async () => {
         try {
@@ -18,6 +21,7 @@ export const Login = () => {
                 console.log("Acceso concedido");
                 window.confirm("acceso concedido");
                 // Realiza acciones después de un inicio de sesión exitoso
+                //history.push("/profile")
             } else {
                 console.log("Acceso denegado");
                 window.confirm("contraseña o correo incorrectos");
