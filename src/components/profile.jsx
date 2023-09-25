@@ -5,4 +5,8 @@ import { Redirect } from "react-router-dom"; // Importa Redirect
 
 export const Profile = () => {
     console.log('Entrando al perfil');
+
+    const handleProfile = async () => {
+        
+    }
 };
