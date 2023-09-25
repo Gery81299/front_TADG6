@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
 //import { useHistory } from "react-router-dom";
-
+import { Redirect } from "react-router-dom"; // Importa Redirect
 
 export const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     //const history = useHistory();
+    const [grantedAccess, setGrantedAccess] = useState(false); // Estado para controlar la redirección
 
     const handleLogin = async () => {
         try {
@@ -22,6 +23,7 @@ export const Login = () => {
                 window.confirm("acceso concedido");
                 // Realiza acciones después de un inicio de sesión exitoso
                 //history.push("/profile")
+                setGrantedAccess(true); // Cambia el estado para redirigir
             } else {
                 console.log("Acceso denegado");
                 window.confirm("contraseña o correo incorrectos");
@@ -31,6 +33,10 @@ export const Login = () => {
             console.error("Error en la solicitud:", error);
         }
     };
+
+    if (grantedAccess) {
+        //return <Redirect to="/profile" /> // Redirige a la página de perfil si se concede el access
+    }
 
     return (
         <>
