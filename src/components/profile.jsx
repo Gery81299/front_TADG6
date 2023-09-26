@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom"; 
 
-function Profile() {
+export const Profile = () => {
 
     return(
         <div class="container-xl px-4 mt-4">
@@ -89,7 +91,8 @@ function Profile() {
     </div>
     
       );
-    }
+}
 
 
-export default Profile;
+//export default Profile;
+//export default Profile;
