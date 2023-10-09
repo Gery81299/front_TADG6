@@ -44,9 +44,6 @@ export const Login = () => {
     };
 
     if (isLoggedIn) {
-        // Si el usuario está autenticado, redirigir a la página de inicio
-        //window.location.href = "./profile.js"; // Cambia esto a la URL de tu página de inicio
-        //navigate("./profile");
         console.log("isLoggedIn");
         window.location.href = "profile";
     }
@@ -153,16 +150,5 @@ export const Login = () => {
                 
                 </div>
                 </section>
-        
-
-
-
-
-
-
-        
-
-
-
     );
 };

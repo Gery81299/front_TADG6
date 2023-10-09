@@ -21,24 +21,9 @@ export const Profile = () => {
         try {
             console.log(email);
             const response = await axios.get("http://127.0.0.1:9000/api/usersIntern_byEmail?email="+email);
-            
-            setProfileData(response.data);
-            console.log("abc");
             console.log(response.data);
+            setProfileData(response.data);
             console.log(profileData);
-            /*if (response.data.message.includes("Credenciales válidas: Usuario existe.")) {
-                console.log("Acceso concedido");
-                window.confirm("acceso concedido");
-                // Realiza acciones después de un inicio de sesión exitoso
-                // Autenticación exitosa
-                setIsLoggedIn(true);
-                // Guardar la sesión en localStorage
-                localStorage.setItem("session", JSON.stringify({ email }));
-            } else {
-                console.log("Acceso denegado");
-                window.confirm("contraseña o correo incorrectos");
-                // Realiza acciones cuando el inicio de sesión no es exitoso
-            }*/
         } catch (error) {
             console.error("Error en la solicitud: ", error);
         }
@@ -48,15 +33,17 @@ export const Profile = () => {
         if (!localStorage.getItem("session")) {
           window.location.href = "login";
         } else {
-          getProfile("kevin.pantoja@unmsm.edu.pe");
+          // Verificar si hay una sesión iniciada
+          const sessionData = localStorage.getItem("session");
+          if (sessionData) {
+            const session = JSON.parse(sessionData);
+            const email = session.email;
+            getProfile(email);
+          } else {
+            window.location.href = "login";
+          }
         }
       }, []);
-
-      /*if (!localStorage.getItem("session")) {
-        window.location.href = "login";
-        }else{
-            getProfile("kevin.pantoja@unmsm.edu.pe");
-        }*/
 
     return(
         <div>
@@ -84,38 +71,28 @@ export const Profile = () => {
                   className="rounded-circle img-fluid"
                   style={{ width: '150px' }}
                 />
-                <h5 className="my-3">John Smith</h5>
-                <p className="text-muted mb-1">Full Stack Developer</p>
-                <p className="text-muted mb-4">Bay Area, San Francisco, CA</p>
+                <h5 className="my-3">{profileData["_Nombre"]}</h5>
+                <p className="text-muted mb-1">{profileData["_Carrera"]}</p>
+                <p className="text-muted mb-4">{profileData["_Universidad"]}</p>
                 <div className="d-flex justify-content-center mb-2">
-                  <button type="button" className="btn btn-primary">Follow</button>
-                  <button type="button" className="btn btn-outline-primary ms-1">Message</button>
+                  <button type="button" className="btn btn-primary">Editar</button>
+                  <button type="button" className="btn btn-outline-primary ms-1">Actualizar</button>
                 </div>
               </div>
             </div>
             <div className="card mb-4 mb-lg-0">
               <div className="card-body p-0">
                 <ul className="list-group list-group-flush rounded-3">
+                
+                
+                {profileData && profileData["_Gustos"] && profileData["_Gustos"].map((elemento) => (
                   <li className="list-group-item d-flex justify-content-between align-items-center p-3">
                     <i className="fas fa-globe fa-lg text-warning"></i>
-                    <p className="mb-0">https://mdbootstrap.com</p>
+                    <p className="mb-0">{elemento}</p>
                   </li>
-                  <li className="list-group-item d-flex justify-content-between align-items-center p-3">
-                    <i className="fab fa-github fa-lg" style={{ color: '#333333' }}></i>
-                    <p className="mb-0">mdbootstrap</p>
-                  </li>
-                  <li className="list-group-item d-flex justify-content-between align-items-center p-3">
-                    <i className="fab fa-twitter fa-lg" style={{ color: '#55acee' }}></i>
-                    <p className="mb-0">@mdbootstrap</p>
-                  </li>
-                  <li className="list-group-item d-flex justify-content-between align-items-center p-3">
-                    <i className="fab fa-instagram fa-lg" style={{ color: '#ac2bac' }}></i>
-                    <p className="mb-0">mdbootstrap</p>
-                  </li>
-                  <li className="list-group-item d-flex justify-content-between align-items-center p-3">
-                    <i className="fab fa-facebook-f fa-lg" style={{ color: '#3b5998' }}></i>
-                    <p className="mb-0">mdbootstrap</p>
-                  </li>
+                ))}
+
+
                 </ul>
               </div>
             </div>
@@ -128,7 +105,7 @@ export const Profile = () => {
                     <p className="mb-0">Full Name</p>
                   </div>
                   <div className="col-sm-9">
-                    <p className="text-muted mb-0">{profileData["_nombre"]}</p>
+                    <p className="text-muted mb-0">{profileData["_Nombre"]} {profileData["_Apellido"]}</p>
                   </div>
                 </div>
                 <hr />
@@ -137,34 +114,34 @@ export const Profile = () => {
                     <p className="mb-0">Email</p>
                   </div>
                   <div className="col-sm-9">
-                    <p className="text-muted mb-0">example@example.com</p>
+                    <p className="text-muted mb-0">{profileData["_Correo"]}</p>
                   </div>
                 </div>
                 <hr />
                 <div className="row">
                   <div className="col-sm-3">
-                    <p className="mb-0">Phone</p>
+                    <p className="mb-0">Carrera</p>
                   </div>
                   <div className="col-sm-9">
-                    <p className="text-muted mb-0">(097) 234-5678</p>
+                    <p className="text-muted mb-0">{profileData["_Carrera"]} ({profileData["_Facultad"]})</p>
                   </div>
                 </div>
                 <hr />
                 <div className="row">
                   <div className="col-sm-3">
-                    <p className="mb-0">Mobile</p>
+                    <p className="mb-0">Universidad</p>
                   </div>
                   <div className="col-sm-9">
-                    <p className="text-muted mb-0">(098) 765-4321</p>
+                    <p className="text-muted mb-0">{profileData["_Universidad"]}</p>
                   </div>
                 </div>
                 <hr />
                 <div className="row">
                   <div className="col-sm-3">
-                    <p className="mb-0">Address</p>
+                    <p className="mb-0">Enlace portafolio</p>
                   </div>
                   <div className="col-sm-9">
-                    <p className="text-muted mb-0">Bay Area, San Francisco, CA</p>
+                    <p className="text-muted mb-0">{profileData["_Enlace_Portafolio"]}</p>
                   </div>
                 </div>
               </div>
