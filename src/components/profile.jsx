@@ -45,6 +45,10 @@ export const Profile = () => {
         }
       }, []);
 
+      const editProfile = async () => {
+        window.location.href = "editProfile";
+    };
+
     return(
         <div>
         <section style={{ backgroundColor: '#eee' }}>
@@ -75,7 +79,7 @@ export const Profile = () => {
                 <p className="text-muted mb-1">{profileData["_Carrera"]}</p>
                 <p className="text-muted mb-4">{profileData["_Universidad"]}</p>
                 <div className="d-flex justify-content-center mb-2">
-                  <button type="button" className="btn btn-primary">Editar</button>
+                  <button type="button" className="btn btn-primary" onClick={editProfile} >Editar</button>
                   <button type="button" className="btn btn-outline-primary ms-1">Actualizar</button>
                 </div>
               </div>
@@ -141,7 +145,7 @@ export const Profile = () => {
                     <p className="mb-0">Enlace portafolio</p>
                   </div>
                   <div className="col-sm-9">
-                    <p className="text-muted mb-0">{profileData["_Enlace_Portafolio"]}</p>
+                    <p className="text-muted mb-0"><a href={profileData["_Enlace_Portafolio"]} target="_blank">Enlace portafolio / CV</a></p>
                   </div>
                 </div>
               </div>
