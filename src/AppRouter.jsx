@@ -1,9 +1,9 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
-import {Login} from "./components/login"; // Importa tus componentes
-import {Profile} from "./components/profile"; // Importa tus componentes
-import {EditProfile} from "./components/editProfile"; // Importa tus componentes
-import {Principal} from "./components/Principal"; // Importa tus componentes
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Principal } from "./components/Principal"; // Importa tus componentes
+import { EditProfile } from "./components/editProfile"; // Importa tus componentes
+import { Login } from "./components/login"; // Importa tus componentes
+import { Profile } from "./components/profile"; // Importa tus componentes
 
 
 const AppRouter = () => {

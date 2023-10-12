@@ -1,6 +1,4 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 
 export const Principal = () => {
 
@@ -30,32 +28,54 @@ export const Principal = () => {
   };
 
   return (
-    <div>
-      <section style={{ backgroundColor: '#eee' }}></section>  
-      <div className="container py-5"> {/* Cambia "di" a "div" aquí */}
-        <div className="row">
-          <div className="col">
-            <nav aria-label="breadcrumb" className="bg-light rounded-3 p-3 mb-4">
-              <ol className="breadcrumb mb-0">
-                <button type="button" className="btn btn-primary m-2" onClick={() => handleNavigation("Principal")}>Inicio</button>
-                <button type="button" className="btn btn-primary m-2" onClick={() => handleNavigation("proyectos")}>Proyectos</button>
-                <button type="button" className="btn btn-primary m-2" onClick={() => handleNavigation("amigos")}>Amigos</button>
-                <button type="button" className="btn btn-primary m-2" onClick={() => handleNavigation("solicitudes")}>solicitudes</button>
-                <button type="button" className="btn btn-danger m-2" onClick={handleLogout}>Logout</button>
-                <div className="card-body text-center">
-                <img
-                  src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
-                  alt="avatar"
-                  className="rounded-circle img-fluid"
-                  style={{ width: '50px', marginLeft: '600px' }}
-                />
+<div>
+  <section style={{ backgroundColor: '#eee' }}></section>
+  <div className="container py-5">
+    <div className="row">
+      <div className="col">
+        <nav aria-label="breadcrumb" className="bg-light rounded-3 p-3 mb-4">
+          <ol className="breadcrumb mb-0">
+            <div className="d-flex justify-content-between align-items-center">
+              <div className="Botones Principal" style={{marginLeft:'30px'}}>
+                {/* Botones de navegación */}
+                <button type="button" className="btn btn-primary m-2" onClick={() => handleNavigation("Principal")}>
+                  Inicio
+                </button>
+                <button type="button" className="btn btn-primary m-2" onClick={() => handleNavigation("proyectos")}>
+                  Proyectos
+                </button>
+                <button type="button" className="btn btn-primary m-2" onClick={() => handleNavigation("Grupos")}>
+                  Mis Grupos
+                </button>
+                <button type="button" className="btn btn-primary m-2" onClick={() => handleNavigation("solicitudes")}>
+                  Solicitudes
+                </button>
+              </div>
+              <div className="d-flex align-items-center">
+                <div style={{ marginLeft: '480px' }}>
+                  <p>Mi Texto</p>
                 </div>
-              </ol>
-            </nav>
-          </div>
-        </div>
+                <div style={{marginLeft:'30px'}}>
+                  <img
+                    src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                    alt="avatar"
+                    className="rounded-circle img-fluid"
+                    style={{ width: '50px' }}
+                  />
+                </div>
+                <div className="card-body text-center" style={{marginLeft:'30px'}}>
+                <button type="button" className="btn btn-danger m-2" onClick={handleLogout}>
+                  Logout
+                </button>
+                </div>
+              </div>
+            </div>
+          </ol>
+        </nav>
       </div>
     </div>
+  </div>
+</div>
   );
 };
 
