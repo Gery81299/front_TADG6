@@ -1,8 +1,10 @@
+import axios from "axios";
 import React, { useState } from "react";
 
 export const Principal = () => {
 
     const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado para controlar si el usuario está autenticado
+    const [profileData, setProfileData] = useState({});
 
     const handleLogout = () => {
         // Realiza las acciones necesarias para cerrar la sesión, como limpiar localStorage y cambiar el estado de isLoggedIn
@@ -11,6 +13,19 @@ export const Principal = () => {
         console.log("logout");
         window.location.href = "login";
       };
+
+      const getProfile = async (email) => {
+        try {
+            console.log(email);
+            const response = await axios.get("http://127.0.0.1:9000/api/usersIntern_byEmail?email="+email);
+            console.log(response.data);
+            setProfileData(response.data);
+            console.log(profileData);
+        } catch (error) {
+            console.error("Error en la solicitud: ", error);
+        }
+      }
+
 
     // Función para manejar la navegación
   const handleNavigation = (destination) => {
@@ -53,7 +68,7 @@ export const Principal = () => {
               </div>
               <div className="d-flex align-items-center">
                 <div style={{ marginLeft: '480px' }}>
-                  <p>Mi Texto</p>
+                  <p className="text-muted mb-0">{profileData["_Nombre"]}</p>
                 </div>
                 <div style={{marginLeft:'30px'}}>
                   <img
