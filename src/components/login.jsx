@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom"; 
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import './login.css';
 
 export const Login = () => {
@@ -45,7 +45,8 @@ export const Login = () => {
 
     if (isLoggedIn) {
         console.log("isLoggedIn");
-        window.location.href = "profile";
+        //window.location.href = "profile";
+        window.location.href = "Principal";
     }
 
     return (
