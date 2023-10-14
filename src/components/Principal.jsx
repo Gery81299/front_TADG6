@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 
+
 export const Principal = () => {
 
     const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado para controlar si el usuario está autenticado
@@ -26,21 +27,23 @@ export const Principal = () => {
         }
       }
 
-
     // Función para manejar la navegación
-  const handleNavigation = (destination) => {
-    if (destination === "inicio") {
-      // Redirige a la página de inicio
-      //history.push("/inicio"); // Reemplaza "/inicio" con la ruta deseada
-    } else if (destination === "proyectos") {
-      // Redirige a la página de proyectos
-      //history.push("/proyectos"); // Reemplaza "/proyectos" con la ruta deseada
-    } else if (destination === "amigos") {
-      // Redirige a la página de amigos
-      //history.push("/amigos"); // Reemplaza "/amigos" con la ruta deseada
+    const handleprincipal = async() => {
+      window.location.href = "Principal";
     }
-    // Puedes agregar más casos según tus necesidades
-  };
+
+    const handleproyectos = async() => {
+      //window.location.href = "Projects";
+    }
+
+    const handlegrupos = async() => {
+      //window.location.href = "Grupos";
+    }
+    
+    const handlesolicitudes = async() => {
+
+    }
+
 
   return (
 <div>
@@ -53,22 +56,22 @@ export const Principal = () => {
             <div className="d-flex justify-content-between align-items-center">
               <div className="Botones Principal" style={{marginLeft:'30px'}}>
                 {/* Botones de navegación */}
-                <button type="button" className="btn btn-primary m-2" onClick={() => handleNavigation("Principal")}>
+                <button type="button" className="btn btn-primary m-2" onClick={() => handleprincipal()}>
                   Inicio
                 </button>
-                <button type="button" className="btn btn-primary m-2" onClick={() => handleNavigation("proyectos")}>
+                <button type="button" className="btn btn-primary m-2" onClick={() => handleproyectos()}>
                   Proyectos
                 </button>
-                <button type="button" className="btn btn-primary m-2" onClick={() => handleNavigation("Grupos")}>
+                <button type="button" className="btn btn-primary m-2" onClick={() => handlegrupos()}>
                   Mis Grupos
                 </button>
-                <button type="button" className="btn btn-primary m-2" onClick={() => handleNavigation("solicitudes")}>
+                <button type="button" className="btn btn-primary m-2" onClick={() => handlesolicitudes()}>
                   Solicitudes
                 </button>
               </div>
               <div className="d-flex align-items-center">
-                <div style={{ marginLeft: '480px' }}>
-                  <p className="text-muted mb-0">{profileData["_Nombre"]}</p>
+                <div className="col-sm-0" style={{ marginLeft: '480px' }}>
+                <p className="text-muted mb-0">{profileData["_Nombre"]}</p>
                 </div>
                 <div style={{marginLeft:'30px'}}>
                   <img
