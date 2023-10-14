@@ -71,7 +71,7 @@ export const Principal = () => {
               </div>
               <div className="d-flex align-items-center">
                 <div className="col-sm-0" style={{ marginLeft: '480px' }}>
-                <p className="text-muted mb-0">{profileData["_Nombre"]}</p>
+                <p className="text-muted mb-0">NOMBRE</p>
                 </div>
                 <div style={{marginLeft:'30px'}}>
                   <img
