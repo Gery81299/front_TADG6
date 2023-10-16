@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 
 export const Principal = () => {
@@ -33,7 +33,7 @@ export const Principal = () => {
     }
 
     const handleproyectos = async() => {
-      //window.location.href = "Projects";
+      window.location.href = "Projects";
     }
 
     const handlegrupos = async() => {
@@ -43,6 +43,26 @@ export const Principal = () => {
     const handlesolicitudes = async() => {
 
     }
+
+    const handleprofile = async() => {
+      window.location.href = "Profile";
+    }
+
+    useEffect(() => {
+      if (!localStorage.getItem("session")) {
+        window.location.href = "login";
+      } else {
+        // Verificar si hay una sesión iniciada
+        const sessionData = localStorage.getItem("session");
+        if (sessionData) {
+          const session = JSON.parse(sessionData);
+          const email = session.email;
+          getProfile(email);
+        } else {
+          window.location.href = "login";
+        }
+      }
+    }, []);
 
 
   return (
@@ -60,18 +80,21 @@ export const Principal = () => {
                   Inicio
                 </button>
                 <button type="button" className="btn btn-primary m-2" onClick={() => handleproyectos()}>
-                  Proyectos
+                  Mis Proyectos
                 </button>
                 <button type="button" className="btn btn-primary m-2" onClick={() => handlegrupos()}>
                   Mis Grupos
                 </button>
-                <button type="button" className="btn btn-primary m-2" onClick={() => handlesolicitudes()}>
+                {/*<button type="button" className="btn btn-primary m-2" onClick={() => handlesolicitudes()}>
                   Solicitudes
+                </button>*/}
+                <button type="button" className="btn btn-primary m-2" onClick={() => handleprofile()}>
+                  Perfil
                 </button>
               </div>
               <div className="d-flex align-items-center">
                 <div className="col-sm-0" style={{ marginLeft: '480px' }}>
-                <p className="text-muted mb-0">NOMBRE</p>
+                <p className="text-muted mb-0">{profileData["_Nombre"]}</p>
                 </div>
                 <div style={{marginLeft:'30px'}}>
                   <img

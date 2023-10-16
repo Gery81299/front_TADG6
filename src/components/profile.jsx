@@ -53,16 +53,7 @@ export const Profile = (props) => {
         <div>
         <section style={{ backgroundColor: '#eee' }}>
       <div className="container py-5">
-        <div className="row">
-          <div className="col">
-            <nav aria-label="breadcrumb" className="bg-light rounded-3 p-3 mb-4">
-              <ol className="breadcrumb mb-0">
-                <Principal profileData={profileData} />
-              </ol>
-            </nav>
-          </div>
-        </div>
-
+        <Principal profileData={profileData} />
         <div className="row">
           <div className="col-lg-4">
             <div className="card mb-4">
@@ -78,7 +69,7 @@ export const Profile = (props) => {
                 <p className="text-muted mb-4">{profileData["_Universidad"]}</p>
                 <div className="d-flex justify-content-center mb-2">
                   <button type="button" className="btn btn-primary" onClick={editProfile} >Editar</button>
-                  <button type="button" className="btn btn-outline-primary ms-1">Actualizar</button>
+                  <button type="button" className="btn btn-outline-primary ms-1">Actualizar Contraseña</button>
                 </div>
               </div>
             </div>
@@ -220,16 +211,15 @@ export const Profile = (props) => {
         </div>
       </div>
     </section>
-    <div className="card mb-4">
+    {/*<div className="card mb-4">
         <div className="card-body text-center">
-        {/* ... Contenido del perfil ... */}
         <div className="d-flex justify-content-center mb-2">
             <button type="button" className="btn btn-danger" onClick={handleLogout}>
             Logout
             </button>
         </div>
         </div>
-    </div>
+    </div>*/}
     </div>
       );
 }
