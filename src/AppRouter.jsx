@@ -5,6 +5,7 @@ import { EditProfile } from "./components/editProfile";
 import { Login } from "./components/login"; 
 import { Profile } from "./components/profile"; 
 import { Projects } from "./components/projects"; 
+import {ViewProject} from "./components/viewProject";
 
 
 const AppRouter = () => {
@@ -19,6 +20,7 @@ const AppRouter = () => {
             <Route path = "" element={<Login />}/> 
             <Route path = "/principal" element={<Principal />}/>
             <Route path = "/projects" element={<Projects />}/>
+            <Route path = "/viewProject" element={<ViewProject />}/>
             { /* Agrega más rutas según tus necesidades */ } 
         </Routes> 
     </Router>

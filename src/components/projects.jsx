@@ -30,6 +30,15 @@ export const Projects = (props) => {
         }
       }
 
+      const getDetail = (codProject) => {
+        //const sessionData = localStorage.getItem("session");
+        const sessionData = JSON.parse(localStorage.getItem("session"));
+        sessionData["cod_proyecto"] = codProject;
+
+        localStorage.setItem("session", JSON.stringify(sessionData));
+        window.location.href = "ViewProject";
+      }
+
       useEffect(() => {
         if (!localStorage.getItem("session")) {
           window.location.href = "login";
@@ -93,7 +102,7 @@ export const Projects = (props) => {
                             </div>
                             </div>
                             <div className="col-3 text-center" >
-                            <button type="button" className="btn btn-primary m-2">
+                            <button type="button" className="btn btn-primary m-2"  onClick={() => getDetail(project["_id"])}>
                                 Ver detalles
                             </button>
                             </div>
@@ -169,7 +178,7 @@ export const Projects = (props) => {
                             </div>
                             </div>
                             <div className="col-3 text-center" >
-                            <button type="button" className="btn btn-primary m-2">
+                            <button type="button" className="btn btn-primary m-2"  onClick={() => getDetail(project["_id"])}>
                                 Ver detalles
                             </button>
                             </div>
