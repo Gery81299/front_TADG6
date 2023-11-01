@@ -11,20 +11,26 @@ export const EditProfile = () => {
     const [facultad, setFacultad] = useState('');
     const [universidad, setUniversidad] = useState('');
     const [enlacePortafolio, setEnlacePortafolio] = useState('');
-    const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado para controlar si el usuario está autenticado
+    const [enlacePresentacion, setEnlacePresentacion] = useState('');
+    //const [fotoPerfil, setFotoPerfil] = useState(null);
+    //const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado para controlar si el usuario está autenticado
 
     const [profileData, setProfileData] = useState({});
 
     const updateProfile = async () =>{
         var jsonProfile = profileData;
+
         profileData["_Nombre"] = nombre;
         profileData["_Apellido"] = apellido;
         profileData["_Carrera"] = carrera;
         profileData["_Facultad"] = facultad;
         profileData["_Universidad"] = universidad;
         profileData["_Enlace_Portafolio"] = enlacePortafolio;
+        profileData["_Enlace_Presentacion"] = enlacePresentacion;
+        //profileData["_Foto_Perfil"] = fotoPerfil;
 
         try {
+            window.confirm(profileData);
             const response = await axios.put("http://127.0.0.1:9000/api/usersIntern_update?email="+profileData["_Correo"], profileData);
             console.log(response); // No necesitas comillas alrededor de response aquí
             if (response.data.message.includes("Actualizado con éxito")) {
@@ -54,6 +60,8 @@ export const EditProfile = () => {
             setFacultad(response.data["_Facultad"]);
             setUniversidad(response.data["_Universidad"]);
             setEnlacePortafolio(response.data["_Enlace_Portafolio"]);
+            setEnlacePresentacion(response.data["_Enlace_Presentacion"]);
+            //setFotoPerfil(response.data["_Foto_Perfil"]);
         } catch (error) {
             console.error("Error en la solicitud: ", error);
         }
@@ -92,20 +100,25 @@ export const EditProfile = () => {
               </div>
               <div className="form-group">
                 <label htmlFor="carrera">Carrera</label>
-                <input type="text" id="carrera" name="carrera" value={carrera} onChange={(e) => setCarrera(e.target.value)} className="form-control" required />
+                <input type="text" readOnly disabled id="carrera" name="carrera" value={carrera} onChange={(e) => setCarrera(e.target.value)} className="form-control" required />
               </div>
               <div className="form-group">
                 <label htmlFor="facultad">Facultad</label>
-                <input type="text" id="facultad" name="facultad" value={facultad} onChange={(e) => setFacultad(e.target.value)} className="form-control" required />
+                <input type="text" readOnly disabled id="facultad" name="facultad" value={facultad} onChange={(e) => setFacultad(e.target.value)} className="form-control" required />
               </div>
               <div className="form-group">
                 <label htmlFor="universidad">Universidad</label>
-                <input type="text" id="universidad" name="universidad" value={universidad} onChange={(e) => setUniversidad(e.target.value)} className="form-control" required />
+                <input type="text" readOnly disabled id="universidad" name="universidad" value={universidad} onChange={(e) => setUniversidad(e.target.value)} className="form-control" required />
               </div>
               <div className="form-group">
                 <label htmlFor="enlacePortafolio">Enlace Portafolio</label>
                 <input type="url" id="enlacePortafolio" name="enlacePortafolio" value={enlacePortafolio} onChange={(e) => setEnlacePortafolio(e.target.value)} className="form-control" required />
               </div>
+              <div className="form-group">
+                <label htmlFor="enlacePresentacion">Enlace Presentacion</label>
+                <input type="url" id="enlacePresentacion" name="enlacePresentacion" value={enlacePresentacion} onChange={(e) => setEnlacePresentacion(e.target.value)} className="form-control" required />
+              </div>
+
               <div className="form-group d-flex justify-content-between mt-3">
                 <button type="button" className="btn btn-secondary mr-2" onClick={(e) => window.location.href = "profile"}>Cancelar</button>
                 <button type="button" className="btn btn-primary" onClick={updateProfile}>Actualizar</button>

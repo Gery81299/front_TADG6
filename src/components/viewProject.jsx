@@ -5,7 +5,7 @@ import Principal from "./Principal";
 
 export const ViewProject = (props) => {
 
-    const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado para controlar si el usuario está autenticado
+    //const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado para controlar si el usuario está autenticado
     const [project, setProject] = useState({});
     const [email, setEmail] = useState();
     const [positions, setPositions] = useState({});
@@ -146,7 +146,7 @@ export const ViewProject = (props) => {
                                           <th>Nombre</th>
                                           <th>Descripción</th>
                                           <th>Habilidades</th>
-                                          <th>Cantidad</th>
+                                          <th>Vacantes Restantes</th>
                                           <th>Reclutados</th>
                                         </tr>
                                       </thead>
@@ -175,10 +175,6 @@ export const ViewProject = (props) => {
                                   </div>
                                 </div>
                               </div>
-
-
-
-                              
                             </div>
                           </div>
                         </div>
@@ -203,7 +199,7 @@ export const ViewProject = (props) => {
                               </div>
                           ):(
                               <div className="form-group d-flex justify-content-between mt-3">
-                                <button type="button" className="btn btn-secondary mr-2">Regresar</button>
+                                <button type="button" className="btn btn-secondary mr-2" onClick={() => handleRegresar()}>Regresar</button>
                               </div>
                           )}
                       </div>
@@ -212,17 +208,8 @@ export const ViewProject = (props) => {
               </div>
             </div>
 
-
-
-            
-
-
-
-  
         </section>  
         )}
-        
-
     </div>
       );
 }

@@ -61,6 +61,10 @@ export const Projects = (props) => {
         window.location.href = "Principal";
       }
 
+      const handleCreateProject = async() => {
+        window.location.href = "createProject";
+      }
+
     return(
     <div>
         <section style={{ backgroundColor: '#FFFFFF' }}>
@@ -131,7 +135,7 @@ export const Projects = (props) => {
                   <div className="col">
                   <nav aria-label="breadcrumb" className="rounded-3 p-3 mb-4">
                       <div className="d-flex justify-content-center align-items-center">
-                          <button type="button" className="btn btn-primary m-2">
+                          <button type="button" className="btn btn-primary m-2" onClick={() => handleCreateProject()}>
                                 Crear nuevo proyecto
                           </button>
                       </div>
