@@ -66,7 +66,8 @@ export const ViewProject = (props) => {
       }, []);
 
       const handleRegresar = async() => {
-        window.location.href = "Projects";
+        window.history.back();
+        //window.location.href = "Projects";
       }
 
       const handleInicio = async() => {

@@ -28,8 +28,8 @@ export const Principal = () => {
       }
 
     // Función para manejar la navegación
-    const handleprincipal = async() => {
-      window.location.href = "Principal";
+    const handleinicio = async() => {
+      window.location.href = "inicio";
     }
 
     const handleproyectos = async() => {
@@ -67,6 +67,7 @@ export const Principal = () => {
 
   return (
 <div>
+  
   <section style={{ backgroundColor: '#eee' }}></section>
   <div className="container py-5">
     <div className="row">
@@ -76,7 +77,7 @@ export const Principal = () => {
             <div className="d-flex justify-content-between align-items-center">
               <div className="Botones Principal" style={{marginLeft:'30px'}}>
                 {/* Botones de navegación */}
-                <button type="button" className="btn btn-primary m-2" onClick={() => handleprincipal()}>
+                <button type="button" className="btn btn-primary m-2" onClick={() => handleinicio()}>
                   Inicio
                 </button>
                 <button type="button" className="btn btn-primary m-2" onClick={() => handleproyectos()}>
