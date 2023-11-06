@@ -58,7 +58,7 @@ export const Projects = (props) => {
       }, []);
 
       const handleInicio = async() => {
-        window.location.href = "Principal";
+        window.location.href = "Inicio";
       }
 
       const handleCreateProject = async() => {
