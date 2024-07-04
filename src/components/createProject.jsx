@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Principal from "./Principal";
 
@@ -70,6 +69,10 @@ export const CreateProject = (props) => {
         window.location.href = "Projects";
       }
 
+      const handleCrear = async() => {
+        window.location.href = "Projects"
+      }
+
       const handleInicio = async() => {
         window.location.href = "Principal";
       }
@@ -129,7 +132,7 @@ export const CreateProject = (props) => {
                             <div className="d-flex justify-content-center align-items-center">
                                 <div className="form-group d-flex justify-content-between mt-3">
                                 <button type="button" className="btn btn-secondary m-2" onClick={() => handleRegresar()}>Regresar</button>
-                                <button type="button" className="btn btn-primary m-2">Crear</button>
+                                <button type="button" className="btn btn-primary m-2" onClick={() => handleCrear()}>Crear</button>
                                 </div>
                             </div>
                         </nav>

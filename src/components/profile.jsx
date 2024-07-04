@@ -137,6 +137,15 @@ export const Profile = (props) => {
                     <p className="text-muted mb-0"><a href={profileData["_Enlace_Portafolio"]} target="_blank">Enlace portafolio / CV</a></p>
                   </div>
                 </div>
+                <hr />
+                <div className="row">
+                  <div className="col-sm-3">
+                    <p className="mb-0">Enlace Linkedln</p>
+                  </div>
+                  <div className="col-sm-9">
+                    <p className="text-muted mb-0"><a href={profileData["_Enlace_Linkedln"]} target="_blank">Enlace Linkedln</a></p>
+                  </div>
+                </div>
               </div>
             </div>
             <div className="row">

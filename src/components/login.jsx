@@ -46,7 +46,8 @@ export const Login = () => {
     if (isLoggedIn) {
         console.log("isLoggedIn");
         //window.location.href = "profile";
-        window.location.href = "Principal";
+        //window.location.href = "Principal";
+        window.location.href = "Projects";
     }
 
     return (
@@ -57,7 +58,8 @@ export const Login = () => {
                     <div className="row d-flex justify-content-center align-items-center h-100">
                     <div className="col-md-9 col-lg-6 col-xl-5">
                         <img
-                        src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                        //src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                        src="escudos.png"
                         className="img-fluid"
                         alt="Sample image"
                         />

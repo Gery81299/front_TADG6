@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom"; 
+import React, { useEffect, useState } from "react";
 import './login.css';
 
 export const EditProfile = () => {
@@ -12,6 +11,7 @@ export const EditProfile = () => {
     const [universidad, setUniversidad] = useState('');
     const [enlacePortafolio, setEnlacePortafolio] = useState('');
     const [enlacePresentacion, setEnlacePresentacion] = useState('');
+    const [enlaceLinkedln, setEnlaceLinkedln] = useState('');
     //const [fotoPerfil, setFotoPerfil] = useState(null);
     //const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado para controlar si el usuario está autenticado
 
@@ -27,6 +27,7 @@ export const EditProfile = () => {
         profileData["_Universidad"] = universidad;
         profileData["_Enlace_Portafolio"] = enlacePortafolio;
         profileData["_Enlace_Presentacion"] = enlacePresentacion;
+        profileData["_Enlace_Linkedln"] = enlaceLinkedln;
         //profileData["_Foto_Perfil"] = fotoPerfil;
 
         try {
@@ -61,6 +62,7 @@ export const EditProfile = () => {
             setUniversidad(response.data["_Universidad"]);
             setEnlacePortafolio(response.data["_Enlace_Portafolio"]);
             setEnlacePresentacion(response.data["_Enlace_Presentacion"]);
+            setEnlaceLinkedln(response.data["_Enlace_Linkedln"]);
             //setFotoPerfil(response.data["_Foto_Perfil"]);
         } catch (error) {
             console.error("Error en la solicitud: ", error);
@@ -117,6 +119,10 @@ export const EditProfile = () => {
               <div className="form-group">
                 <label htmlFor="enlacePresentacion">Enlace Presentacion</label>
                 <input type="url" id="enlacePresentacion" name="enlacePresentacion" value={enlacePresentacion} onChange={(e) => setEnlacePresentacion(e.target.value)} className="form-control" required />
+              </div>
+              <div className="form-group">
+                <label htmlFor="enlacePortafolio">Enlace Linkedln</label>
+                <input type="url" id="enlacePortafolio" name="enlacePortafolio" value={enlaceLinkedln} onChange={(e) => setEnlaceLinkedln(e.target.value)} className="form-control" required />
               </div>
 
               <div className="form-group d-flex justify-content-between mt-3">
